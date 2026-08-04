@@ -1,16 +1,31 @@
 # ASIC Design Flow Using OpenLane 2.3.10
 
-A complete RTL-to-GDSII implementation of a **4-bit Synchronous Counter** using the **OpenLane 2.3.10** open-source ASIC design flow and the **Sky130 Process Design Kit (PDK)**.
+![OpenLane](https://img.shields.io/badge/OpenLane-v2.3.10-blue)
+![Sky130](https://img.shields.io/badge/PDK-Sky130-success)
+![Verilog](https://img.shields.io/badge/Language-Verilog-orange)
+![Status](https://img.shields.io/badge/Flow-Completed-brightgreen)
 
-This project demonstrates the complete physical design flow starting from Verilog RTL and ending with a manufacturable GDSII layout.
+A complete **RTL-to-GDSII implementation** of a **4-bit Synchronous Counter** using the **OpenLane 2.3.10** open-source ASIC design flow and the **Sky130 Process Design Kit (PDK)**.
+
+This project demonstrates the complete ASIC physical design flow from **Verilog RTL** to a manufacturable **GDSII layout** using modern open-source EDA tools.
 
 ---
 
 # Project Overview
 
-The objective of this project is to understand and implement the complete ASIC design flow using open-source EDA tools.
+The objective of this project is to understand and implement the complete RTL-to-GDSII ASIC design flow using OpenLane.
 
-The design was successfully synthesized, floorplanned, placed, routed, and verified using OpenLane 2.3.10.
+The design was successfully:
+
+- RTL Verified
+- Synthesized
+- Floorplanned
+- Power Planned
+- Placed
+- Clock Tree Synthesized
+- Routed
+- Verified (DRC, LVS, Antenna)
+- Exported as GDSII
 
 ---
 
@@ -37,8 +52,8 @@ The design was successfully synthesized, floorplanned, placed, routed, and verif
 | Yosys | Logic Synthesis |
 | OpenROAD | Physical Design |
 | OpenLane 2.3.10 | Complete ASIC Flow |
-| Magic | DRC/LVS Verification |
-| KLayout | GDSII Visualization |
+| Magic | DRC & LVS Verification |
+| KLayout | Layout Visualization |
 | Docker | Tool Environment |
 | Ubuntu (WSL2) | Development Environment |
 
@@ -90,27 +105,22 @@ GDSII Generation
 
 # RTL Design
 
-The implemented RTL is a **4-bit synchronous binary counter**.
+The implemented RTL is a **4-bit Synchronous Binary Counter**.
 
 ### Features
 
-- Positive edge triggered
-- Active High Reset
-- Counts from 0 to 15
-- Automatically wraps to 0
+- Positive-edge triggered
+- Active-high asynchronous reset
+- Counts from **0 to 15**
+- Automatically wraps to **0**
+
+### RTL Screenshot
+
+<img width="502" height="392" alt="01_RTL Design" src="https://github.com/user-attachments/assets/c58cbeac-e7bd-4393-bc64-4143144ff600"/>
 
 ---
 
-## RTL Screenshot
-
-```
-<img width="502" height="392" alt="01_RTL Design" src="https://github.com/user-attachments/assets/c58cbeac-e7bd-4393-bc64-4143144ff600" />
-
-```
-
----
-
-# Project Structure
+# Repository Structure
 
 ```
 ASIC-Design-Flow-Using-OpenLane
@@ -124,18 +134,17 @@ ASIC-Design-Flow-Using-OpenLane
 │   ├── impl.sdc
 │   └── signoff.sdc
 │
-├── Reports
-│   ├── stat.rpt
-│   ├── metrics.csv
-│   ├── yosys-synthesis.log
-│   └── flow.log
-│
 ├── Layout
 │   ├── counter4.gds
 │   ├── counter4.def
 │   ├── counter4.lef
 │   ├── counter4.mag
 │   └── counter4.v
+│
+├── Reports
+│   ├── stat.rpt
+│   ├── flow.log
+│   └── manufacturability.rpt
 │
 ├── Screenshots
 │   ├── 01_RTL_Design.png
@@ -149,7 +158,7 @@ ASIC-Design-Flow-Using-OpenLane
 │   ├── 09_Routing.png
 │   ├── 10_Final_GDS.png
 │   ├── 11_Zoomed_Layout.png
-│   ├── 12_Final DRC,LVS,Antenna.png 
+│   └── 12_DRC_LVS_Antenna.png
 │
 └── README.md
 ```
@@ -160,71 +169,56 @@ ASIC-Design-Flow-Using-OpenLane
 
 ## 1. OpenLane Flow
 
-The complete OpenLane flow executed successfully.
+### Execution Summary
 
-**Status**
+- Flow Status : ✅ Completed Successfully
+- Total Stages : **78/78**
+- PDK : Sky130
+- OpenLane Version : 2.3.10
 
-- Flow Completed Successfully
-- 78/78 Stages Executed
+### Screenshot
 
+> Replace the link below with your OpenLane Flow screenshot.
+
+<img src="YOUR_OPENLANE_FLOW_IMAGE_LINK" width="850"/>
 
 ---
 
-## 2. Synthesis
+## 2. Logic Synthesis
 
 The RTL was synthesized using **Yosys**.
 
-Generated Information
+Generated Outputs:
 
+- Gate-level Netlist
 - Cell Statistics
 - Area Report
-- Netlist Generation
 
-Screenshot
-
-```
-<img width="604" height="592" alt="03_synthesis_Report" src="https://github.com/user-attachments/assets/5cfbf938-aa4d-43f5-bd11-78f472418572" />
-
-```
+<img width="604" height="592" alt="03_synthesis_Report" src="https://github.com/user-attachments/assets/5cfbf938-aa4d-43f5-bd11-78f472418572"/>
 
 ---
 
 ## 3. Floorplanning
 
-The floorplanning stage generated the die area and core area required for physical implementation.
+The die area and core area were generated during the floorplanning stage.
 
-Screenshot
-
-```
-<img width="601" height="899" alt="04_Floorplan" src="https://github.com/user-attachments/assets/52d9fe0c-fc8b-48a9-b405-04435b57b6e5" />
-
-```
+<img width="601" height="899" alt="04_Floorplan" src="https://github.com/user-attachments/assets/52d9fe0c-fc8b-48a9-b405-04435b57b6e5"/>
 
 ---
 
-## 4. Power Distribution Network
+## 4. Power Distribution Network (PDN)
 
-A complete PDN was generated for the design.
+Power rails and power distribution network were generated successfully.
 
-Screenshot
-
-```
-<img width="529" height="885" alt="05_PDN" src="https://github.com/user-attachments/assets/7f714896-21f7-455f-acc3-6d27871d4c8b" />
-
-```
+<img width="529" height="885" alt="05_PDN" src="https://github.com/user-attachments/assets/7f714896-21f7-455f-acc3-6d27871d4c8b"/>
 
 ---
 
 ## 5. Global Placement
 
-Standard cells were placed inside the core.
+Standard cells were placed inside the core area.
 
-Screenshot
-
-```
-<img width="545" height="895" alt="06_Global Placement" src="https://github.com/user-attachments/assets/22123308-1e69-4a77-af7d-6bb17b826223" />
-
-```
+<img width="545" height="895" alt="06_Global Placement" src="https://github.com/user-attachments/assets/22123308-1e69-4a77-af7d-6bb17b826223"/>
 
 ---
 
@@ -232,25 +226,15 @@ Screenshot
 
 Cells were legally placed with optimized utilization.
 
-Screenshot
-
-```
-
-```<img width="542" height="881" alt="07_Detailed Placement" src="https://github.com/user-attachments/assets/56df23b5-4714-46a2-8672-8afcc8c6f1d3" />
-
+<img width="542" height="881" alt="07_Detailed Placement" src="https://github.com/user-attachments/assets/56df23b5-4714-46a2-8672-8afcc8c6f1d3"/>
 
 ---
 
-## 7. Clock Tree Synthesis
+## 7. Clock Tree Synthesis (CTS)
 
 Clock buffers were inserted to minimize clock skew.
 
-Screenshot
-
-```
-<img width="565" height="894" alt="08_CTS" src="https://github.com/user-attachments/assets/3d1cb6c7-008a-4cf5-86b0-b438a79a7547" />
-
-```
+<img width="565" height="894" alt="08_CTS" src="https://github.com/user-attachments/assets/3d1cb6c7-008a-4cf5-86b0-b438a79a7547"/>
 
 ---
 
@@ -258,38 +242,23 @@ Screenshot
 
 Signal routing completed successfully.
 
-Screenshot
-
-```
-<img width="550" height="896" alt="09_Routing" src="https://github.com/user-attachments/assets/5286db46-2986-4048-8496-8cb013cc7aed" />
-
-```
+<img width="550" height="896" alt="09_Routing" src="https://github.com/user-attachments/assets/5286db46-2986-4048-8496-8cb013cc7aed"/>
 
 ---
 
-## 9. Final Layout
+## 9. Final GDS Layout
 
-The final GDSII layout generated by OpenLane.
+Final manufacturable GDSII layout generated by OpenLane.
 
-Screenshot
-
-```
-<img width="559" height="884" alt="10_Final_GDS" src="https://github.com/user-attachments/assets/bf13ace9-ee22-44a8-9a23-b55852691863" />
-
-```
+<img width="559" height="884" alt="10_Final_GDS" src="https://github.com/user-attachments/assets/bf13ace9-ee22-44a8-9a23-b55852691863"/>
 
 ---
 
 ## 10. Zoomed Layout
 
-Zoomed view showing routing and standard cells.
+Zoomed-in view showing routing and standard cells.
 
-Screenshot
-
-```
-<img width="955" height="871" alt="11_Zoomed Layout" src="https://github.com/user-attachments/assets/1e8a5f58-0f72-4971-a681-63ee72988690" />
-
-```
+<img width="955" height="871" alt="11_Zoomed Layout" src="https://github.com/user-attachments/assets/1e8a5f58-0f72-4971-a681-63ee72988690"/>
 
 ---
 
@@ -297,46 +266,25 @@ Screenshot
 
 ## Design Rule Check (DRC)
 
-**Status**
-
 ✅ Passed
 
-Screenshot
-
-```
-<img width="167" height="235" alt="12_DRC,LVS,Antenna" src="https://github.com/user-attachments/assets/d920d01a-3023-45f8-9e83-44b46842107a" />
-
-```
+<img width="300" alt="DRC Passed" src="https://github.com/user-attachments/assets/d920d01a-3023-45f8-9e83-44b46842107a"/>
 
 ---
 
 ## Layout Versus Schematic (LVS)
 
-**Status**
-
 ✅ Passed
 
-Screenshot
-
-```
-<img width="167" height="235" alt="12_DRC,LVS,Antenna" src="https://github.com/user-attachments/assets/a81f1f6b-dce7-4f65-adf8-81259043aabc" />
-
-```
+<img width="300" alt="LVS Passed" src="https://github.com/user-attachments/assets/a81f1f6b-dce7-4f65-adf8-81259043aabc"/>
 
 ---
 
 ## Antenna Check
 
-**Status**
-
 ✅ Passed
 
-Screenshot
-
-```
-<img width="167" height="235" alt="12_DRC,LVS,Antenna" src="https://github.com/user-attachments/assets/c6d8edfc-6aee-4d9f-96d5-99c497841a7a" />
-
-```
+<img width="300" alt="Antenna Passed" src="https://github.com/user-attachments/assets/c6d8edfc-6aee-4d9f-96d5-99c497841a7a"/>
 
 ---
 
@@ -353,7 +301,7 @@ Screenshot
 
 # Final Outputs
 
-The OpenLane flow generated the following physical design files.
+The OpenLane flow generated the following physical design files:
 
 ```
 counter4.gds
@@ -370,74 +318,60 @@ counter4.lib
 
 # Achievements
 
-✔ RTL Design Completed
-
-✔ Verilator Lint Passed
-
-✔ Logic Synthesis Completed
-
-✔ Floorplanning Completed
-
-✔ PDN Generated
-
-✔ Global Placement Completed
-
-✔ Detailed Placement Completed
-
-✔ Clock Tree Synthesis Completed
-
-✔ Routing Completed
-
-✔ DRC Passed
-
-✔ LVS Passed
-
-✔ Antenna Check Passed
-
-✔ GDSII Generated Successfully
+- ✅ RTL Design Completed
+- ✅ Verilator Lint Passed
+- ✅ Logic Synthesis Completed
+- ✅ Floorplanning Completed
+- ✅ Power Distribution Network Generated
+- ✅ Global Placement Completed
+- ✅ Detailed Placement Completed
+- ✅ Clock Tree Synthesis Completed
+- ✅ Routing Completed
+- ✅ DRC Passed
+- ✅ LVS Passed
+- ✅ Antenna Check Passed
+- ✅ GDSII Generated Successfully
 
 ---
 
 # Learning Outcomes
 
-Through this project, the following concepts were learned:
+This project provided hands-on experience with:
 
 - RTL Design using Verilog
 - ASIC RTL-to-GDSII Flow
 - Logic Synthesis using Yosys
 - Floorplanning
-- Power Distribution Network
-- Global Placement
-- Detailed Placement
+- Power Planning
+- Cell Placement
 - Clock Tree Synthesis
 - Routing
-- Design Rule Check
-- Layout Versus Schematic Verification
+- DRC Verification
+- LVS Verification
+- Antenna Checking
 - GDSII Generation
-- Physical Design using OpenLane
-- Sky130 PDK
-- OpenROAD Tool Flow
+- OpenLane & OpenROAD Toolchain
+- Sky130 Process Design Kit
 
 ---
 
 # Future Improvements
 
 - Design larger digital circuits
-- Implement pipelined processors
-- Explore power optimization
+- Implement a pipelined processor
+- Explore low-power ASIC design techniques
 - Perform timing optimization
 - Multi-clock domain implementation
-- Low-power ASIC design
 
 ---
 
 # Conclusion
 
-This project successfully demonstrates the complete RTL-to-GDSII ASIC implementation flow using **OpenLane 2.3.10** and the **Sky130 Process Design Kit**.
+This project successfully demonstrates the complete RTL-to-GDSII implementation of a **4-bit Synchronous Counter** using **OpenLane 2.3.10** and the **Sky130 PDK**.
 
-A **4-bit synchronous counter** was implemented starting from Verilog RTL and successfully synthesized, floorplanned, placed, routed, and verified. The final physical layout was generated as a GDSII file with successful **DRC**, **LVS**, and **Antenna** verification, validating the correctness of the design.
+The design was successfully synthesized, floorplanned, power planned, placed, clock-tree synthesized, routed, and verified. The final layout passed **DRC**, **LVS**, and **Antenna** verification, resulting in a manufacturable **GDSII** layout.
 
-This project provides practical hands-on experience with modern open-source ASIC design tools and the complete digital VLSI physical design flow.
+This project provides practical hands-on experience with modern open-source ASIC physical design tools and serves as a strong foundation for implementing more complex digital VLSI systems.
 
 ---
 
