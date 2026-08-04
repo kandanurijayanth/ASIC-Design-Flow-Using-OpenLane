@@ -104,7 +104,8 @@ The implemented RTL is a **4-bit synchronous binary counter**.
 ## RTL Screenshot
 
 ```
-Screenshots/01_RTL_Design.png
+<img width="502" height="392" alt="01_RTL Design" src="https://github.com/user-attachments/assets/c58cbeac-e7bd-4393-bc64-4143144ff600" />
+
 ```
 
 ---
@@ -182,7 +183,7 @@ Generated Information
 Screenshot
 
 ```
-<img width="604" height="592" alt="03_synthesis_Report" src="https://github.com/user-attachments/assets/4d8a3272-b0fd-4e22-9296-1f488de44dca" />
+<img width="604" height="592" alt="03_synthesis_Report" src="https://github.com/user-attachments/assets/5cfbf938-aa4d-43f5-bd11-78f472418572" />
 
 ```
 
@@ -195,7 +196,7 @@ The floorplanning stage generated the die area and core area required for physic
 Screenshot
 
 ```
-<img width="601" height="899" alt="04_Floorplan" src="https://github.com/user-attachments/assets/c0847026-6ef8-4b2c-8c63-835032992bcd" />
+<img width="601" height="899" alt="04_Floorplan" src="https://github.com/user-attachments/assets/52d9fe0c-fc8b-48a9-b405-04435b57b6e5" />
 
 ```
 
@@ -208,7 +209,7 @@ A complete PDN was generated for the design.
 Screenshot
 
 ```
-<img width="529" height="885" alt="05_PDN" src="https://github.com/user-attachments/assets/c1ebd0f3-8df4-4453-b6df-89db7eb3e36e" />
+<img width="529" height="885" alt="05_PDN" src="https://github.com/user-attachments/assets/7f714896-21f7-455f-acc3-6d27871d4c8b" />
 
 ```
 
