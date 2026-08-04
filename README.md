@@ -176,11 +176,6 @@ ASIC-Design-Flow-Using-OpenLane
 - PDK : Sky130
 - OpenLane Version : 2.3.10
 
-### Screenshot
-
-> Replace the link below with your OpenLane Flow screenshot.
-
-<img src="YOUR_OPENLANE_FLOW_IMAGE_LINK" width="850"/>
 
 ---
 
